@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>Visual Admin Dashboard - Home</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <script src="js/echarts.min.js"></script>
+
+  </head>
+  <body>  
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <div class="square"><img src="images/panda.png"></div>
+          <h1>叶威强</h1>
+        </header>
+        <div class="profile-photo-container">
+          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
+          <div class="profile-photo-overlay"></div>
+        </div>
+
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li onclick="automaticallyRefresh()"><a href="#" class="active"><i class="fa fa-home fa-fw"></i>主页</a></li>
+            <li>
+              <a href="#" class="active"><i class="fa fa-home fa-fw"></i>
+                学期
+                <ul>
+                  <li onclick="updateAjax('2017-2018', 1.0)">大一上</li>
+                  <li onclick="updateAjax('2017-2018', 2.0)">大一下</li>
+                  <li onclick="updateAjax('2018-2019', 1.0)">大二上</li>
+                </ul>
+              </a>
+            </li>
+          </ul>  
+        </nav>
+      </div>
+      <!-- Main content --> 
+      <div class="templatemo-content col-1 light-gray-bg">
+        <div class="templatemo-top-nav-container">
+          <div class="row">
+            <nav class="templatemo-top-nav col-lg-12 col-md-12">
+              <ul class="text-uppercase">
+                <li><a href="" class="active">Admin panel</a></li>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Overview</a></li>
+                <li><a href="login.html">Sign in form</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div id="rory">
+
+        </div>
+      </div>
+    </div>
+    
+    <!-- JS -->
+    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+
+    <script>
+
+      $(document).ready(function(){
+        if($.browser.mozilla) {
+          //refresh page on browser resize
+          // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
+          $(window).bind('resize', function(e)
+          {
+            if (window.RT) clearTimeout(window.RT);
+            window.RT = setTimeout(function()
+            {
+              this.location.reload(false); /* false to get page from cache */
+            }, 200);
+          });      
+        } else {
+          $(window).resize(function(){
+            drawChart();
+          });  
+        }   
+      });
+      
+    </script>
+    <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script src="index.js"></script>
+  </body>
+</html>
